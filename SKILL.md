@@ -52,11 +52,6 @@ Accept any natural response: "love it", "yes!", "meh", "not really", "definitely
 
 After all 12 reactions, run the inference algorithm:
 
-**Alcohol:**
-- ≥2 alcohol-tagged sketches disliked → `"no"`
-- ≥1 alcohol-tagged sketch liked and 0 disliked → `"yes"`
-- Otherwise → `"occasionally"`
-
 **Activity level:**
 - ≥2 "active"-tagged sketches liked, 0 disliked → `"active"`
 - ≥2 "active"-tagged sketches disliked → `"relaxed"`
@@ -77,8 +72,14 @@ Let them correct anything, then save.
 
 Seed `history.json` concept_reactions with the 12 reactions using sketch text as the idea and the axes.interests as tags. Set `reaction` to `"liked"` / `"neutral"` / `"disliked"` accordingly.
 
-Then ask only the one question that can't be inferred from sketches:
+Then ask the two questions that can't be inferred from sketches:
 
+**Alcohol context** — ask this explicitly, since the nuance matters:
+> "One quick thing about alcohol: are you fine with dates where drinking is just happening around you — concerts, festivals, comedy shows — or would you prefer I avoid that context entirely? Or do you actually enjoy bars and breweries as a destination?"
+
+Map to: `"ambient_ok"` (ambient is fine, bars-as-the-plan is not) / `"no"` (avoid alcohol context entirely) / `"destination_ok"` (bars/breweries welcome as the main event)
+
+**Hard constraints:**
 > "Anything I should always avoid — dietary needs, mobility considerations, anything that's just off the table?"
 
 ---
@@ -87,7 +88,7 @@ Then ask only the one question that can't be inferred from sketches:
 
 Keep it conversational — not a form. Ask one or two at a time:
 
-1. **Alcohol**: "Do you drink alcohol, or would you prefer I steer away from bars and breweries?" → `"yes"` / `"no"` / `"occasionally"`
+1. **Alcohol**: "Some dates have drinking as the main event — bar crawls, brewery tours. Others just happen near alcohol — concerts, festivals, comedy shows. Are you fine with the second kind, or would you prefer I avoid alcohol context entirely? Or happy with both?" → `"ambient_ok"` / `"no"` / `"destination_ok"`
 2. **Activity level**: "How active do you like dates to be — hiking and biking, casual exploring and walking, or more sit-and-talk?" → `"active"` / `"moderate"` / `"relaxed"`
 3. **Budget**: "What's a typical date budget for you two?" → `"$"` (under $30) / `"$$"` ($30–80) / `"$$$"` ($80+)
 4. **Interests**: "What are 2–3 things you both genuinely enjoy?" (art, food, nature, live music, history, sports, architecture, theater, etc.)
@@ -104,7 +105,7 @@ Once answered (via either path), create `~/.config/date-planning/` if needed, th
 {
   "created": "2026-04-12",
   "last_updated": "2026-04-12",
-  "alcohol": "occasionally",
+  "alcohol": "ambient_ok",
   "activity_level": "moderate",
   "budget_typical": "$$",
   "interests": ["art", "food", "live music"],
@@ -142,8 +143,9 @@ Read both config files before making any recommendations.
 
 ### From preferences.json
 
-- `alcohol: "no"` → hard-remove all bars, breweries, cocktail bars from suggestions
-- `alcohol: "occasionally"` → include them as options, don't center the plan around them
+- `alcohol: "no"` → avoid all alcohol context entirely — no bars, breweries, or venues where drinking is part of the scene
+- `alcohol: "ambient_ok"` → concerts, festivals, comedy nights, and events where alcohol happens nearby are fine; don't suggest bars or breweries *as the plan itself*
+- `alcohol: "destination_ok"` → bars and breweries are fully welcome as primary destinations
 - `activity_level: "relaxed"` → weight toward sit-down experiences, gentle walks; avoid strenuous outdoor activities
 - `activity_level: "active"` → lean into hiking, biking, kayaking, exploring
 - `interests` → surface venues tagged with these categories first

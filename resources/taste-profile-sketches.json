@@ -64,14 +64,14 @@
     },
     {
       "id": 6,
-      "sketch": "A Saturday afternoon at a craft brewery taproom — beer flights, good food, talking for hours at a table without feeling rushed to leave",
+      "sketch": "Buffalo Sabres game at KeyBank Center — hockey is fast and genuinely fun even if you don't follow the sport, and the downtown arena makes it easy to grab dinner before or after",
       "axes": {
         "activity": "relaxed",
-        "alcohol": true,
+        "alcohol": false,
         "setting": "indoor",
-        "energy": "relaxed",
+        "energy": "lively",
         "cost": "$$",
-        "interests": ["food", "craft beer"]
+        "interests": ["sports", "spectator", "downtown", "lively"]
       }
     },
     {

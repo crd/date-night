@@ -1,10 +1,10 @@
 {
-  "version": 1,
-  "instructions": "Present these sketches during onboarding taste profile. Each sketch is a concrete, vivid one-liner about a real Buffalo date scenario. After collecting reactions, run the inference algorithm in SKILL.md to derive preferences.",
+  "version": 2,
+  "instructions": "These sketches describe activity types, not specific venues — they work for any city. Present in groups of 4 during onboarding. After collecting reactions, run the inference algorithm in SKILL.md to derive preferences.",
   "sketches": [
     {
       "id": 1,
-      "sketch": "Renting bikes at the Outer Harbor and riding the waterfront trail along Lake Erie — an hour of moving around with the city skyline behind you, then food trucks in Larkinville",
+      "sketch": "Renting bikes and riding a waterfront or trail route — an hour or two of moving around, then food somewhere casual at the end",
       "axes": {
         "activity": "active",
         "alcohol": false,
@@ -16,19 +16,19 @@
     },
     {
       "id": 2,
-      "sketch": "Shea's Performing Arts for a Broadway touring show — the 1926 theater itself is stunning, and a pre-show dinner somewhere on Main Street before curtain",
+      "sketch": "A touring Broadway show or major performing arts event at a historic theater — pre-show dinner before curtain",
       "axes": {
         "activity": "relaxed",
         "alcohol": false,
         "setting": "indoor",
         "energy": "calm",
         "cost": "$$$",
-        "interests": ["theater", "culture", "music"]
+        "interests": ["theater", "culture", "performing arts"]
       }
     },
     {
       "id": 3,
-      "sketch": "An afternoon at the Buffalo AKG Art Museum — one of the best modern art collections in the country — then wandering Elmwood Village for coffee, maybe a bookstore, dinner at whatever looks good",
+      "sketch": "An afternoon at a major art museum, then wandering a walkable indie neighborhood — coffee, maybe a bookstore, dinner at whatever looks good",
       "axes": {
         "activity": "moderate",
         "alcohol": false,
@@ -40,19 +40,19 @@
     },
     {
       "id": 4,
-      "sketch": "Canalside on a summer evening — outdoor concert, cold beers, the Erie Canal lit up, hanging out with a thousand other people all in a good mood",
+      "sketch": "An outdoor summer concert or festival — live music, open air, a crowd that's all in a good mood",
       "axes": {
         "activity": "moderate",
-        "alcohol": true,
+        "alcohol": false,
         "setting": "outdoor",
         "energy": "lively",
         "cost": "$",
-        "interests": ["music", "waterfront", "outdoor"]
+        "interests": ["live music", "outdoor", "festivals"]
       }
     },
     {
       "id": 5,
-      "sketch": "Delaware Park on a Sunday morning — walking the Olmsted-designed paths around Hoyt Lake, coffee from somewhere nearby, no particular agenda",
+      "sketch": "A long walk through a well-known local park — no agenda, good conversation, coffee from somewhere nearby",
       "axes": {
         "activity": "moderate",
         "alcohol": false,
@@ -64,43 +64,43 @@
     },
     {
       "id": 6,
-      "sketch": "Buffalo Sabres game at KeyBank Center — hockey is fast and genuinely fun even if you don't follow the sport, and the downtown arena makes it easy to grab dinner before or after",
+      "sketch": "A professional sports game — local team, downtown arena or stadium, fun even if you don't follow the sport closely",
       "axes": {
         "activity": "relaxed",
         "alcohol": false,
         "setting": "indoor",
         "energy": "lively",
         "cost": "$$",
-        "interests": ["sports", "spectator", "downtown", "lively"]
+        "interests": ["sports", "spectator", "lively", "downtown"]
       }
     },
     {
       "id": 7,
-      "sketch": "Tifft Nature Preserve — 264 acres of urban wetlands right in the city, birdwatching if you're into it, genuinely quiet trails and surprisingly wild for being inside Buffalo",
+      "sketch": "A nature preserve or hiking trail — quiet, maybe wildlife or good views, genuinely away from the city for a few hours",
       "axes": {
         "activity": "active",
         "alcohol": false,
         "setting": "outdoor",
         "energy": "calm",
         "cost": "free",
-        "interests": ["nature", "outdoor", "walking", "peaceful"]
+        "interests": ["nature", "hiking", "outdoor", "peaceful"]
       }
     },
     {
       "id": 8,
-      "sketch": "Dinner at the Rooftop at Hotel Henry — the old 19th-century psychiatric asylum turned boutique hotel, cocktails and dinner in one of the most architecturally striking buildings in the state",
+      "sketch": "Dinner at a unique architectural or historically interesting venue — a repurposed building, a rooftop, somewhere with a story behind it",
       "axes": {
         "activity": "relaxed",
-        "alcohol": true,
+        "alcohol": false,
         "setting": "indoor",
         "energy": "calm",
         "cost": "$$$",
-        "interests": ["architecture", "food", "unique", "upscale"]
+        "interests": ["architecture", "food", "history", "upscale"]
       }
     },
     {
       "id": 9,
-      "sketch": "A full Saturday eating your way through Buffalo — farmers market in the morning, a couple of food stops through the afternoon, a proper dinner at night",
+      "sketch": "A full day eating your way through city neighborhoods — market or brunch in the morning, local spots through the afternoon, proper dinner at night",
       "axes": {
         "activity": "moderate",
         "alcohol": false,
@@ -112,19 +112,19 @@
     },
     {
       "id": 10,
-      "sketch": "Day trip to Niagara Falls — Maid of the Mist boat right into the mist, genuinely one of the most dramatic things you can do within 30 minutes of Buffalo",
+      "sketch": "A day trip to a major natural attraction within an hour or two — somewhere dramatic that you don't need to live near to appreciate",
       "axes": {
         "activity": "active",
         "alcohol": false,
         "setting": "outdoor",
         "energy": "energetic",
         "cost": "$$",
-        "interests": ["nature", "outdoor", "iconic", "adventure"]
+        "interests": ["nature", "outdoor", "adventure", "day-trip"]
       }
     },
     {
       "id": 11,
-      "sketch": "A show at a small local venue — a band you've never heard of or a touring act, standing room, loud and energetic, out by midnight",
+      "sketch": "A show at a small local music venue — a band you've never heard of or a known touring act, standing room, out by midnight",
       "axes": {
         "activity": "moderate",
         "alcohol": false,
@@ -136,7 +136,7 @@
     },
     {
       "id": 12,
-      "sketch": "An Elmwood Village afternoon — good coffee, browsing an independent bookstore, window shopping, stopping for dinner whenever you get hungry",
+      "sketch": "A slow neighborhood afternoon — good coffee, an independent bookstore, window shopping, stopping for dinner whenever you get hungry",
       "axes": {
         "activity": "relaxed",
         "alcohol": false,

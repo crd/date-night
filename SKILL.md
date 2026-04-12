@@ -35,7 +35,16 @@ Ask for the user's city first — everything else depends on it.
 
 > "Before I can plan anything useful, where are you based? City and state/country is enough."
 
-Once you have the city, look up its coordinates (use your knowledge for major cities; ask the user to confirm or correct if uncertain). Store as:
+Once you have the city, look up its coordinates (use your knowledge for major cities; ask the user to confirm or correct if uncertain). Derive the `eventbrite_slug` as `{state_abbr}--{city}` lowercased with spaces as hyphens (e.g., `ny--buffalo`, `or--portland`, `il--chicago`).
+
+Then ask about travel radius:
+> "How far would you typically travel for a date — like, what's your usual range? (e.g., 'staying in the city', '30 minutes', 'up to an hour')"
+
+Map to `search_radius_miles`: within city → 10, ~30 min → 20, ~1 hour → 40, flexible/adventurous → 60.
+
+Then search for the best local event and date resources for that city. Run a web search like: `"best things to do in [city] site:timeout.com OR site:thrillist.com OR site:do312.com"` and look for city-specific event sites (local alt-weeklies, city guides, event calendars). Save the best 2-3 to the city resource file's `websites` array — these will be checked alongside Eventbrite for live events.
+
+Store location as:
 ```json
 "location": {
   "display_name": "Buffalo, NY",
@@ -49,7 +58,7 @@ Once you have the city, look up its coordinates (use your knowledge for major ci
 }
 ```
 
-`search_radius_miles` defaults to 25 for mid-size cities, 10 for dense metros, 40 for rural areas — adjust to context. The user can update it later ("include things within an hour of us").
+The user can update radius later ("include things within an hour of us").
 
 ### Step 2: Offer the taste profile
 
@@ -234,15 +243,14 @@ One question max.
 
 For time-sensitive dates (this week/weekend), check what's actually happening:
 
-**Eventbrite** (primary for current events — works for any city):
+**Eventbrite** (primary for current events — works for any city). Use the coordinate-based bounding box with the user's stored radius:
+```
+https://www.eventbrite.com/d/events?location.latitude={lat}&location.longitude={lon}&location.within={search_radius_miles}mi
+```
+
+Fallback city-page URL if coordinate search fails:
 ```
 https://www.eventbrite.com/d/{eventbrite_slug}/all-events/
-```
-e.g., `https://www.eventbrite.com/d/ny--buffalo/all-events/`
-
-If the user's `search_radius_miles` is set and you want a coordinate-based search:
-```
-https://www.eventbrite.com/d/events?location.latitude={lat}&location.longitude={lon}&location.within={radius}mi
 ```
 
 **City-specific event sites** (from `websites` in the city resource file — these are higher quality for local cities that have good local guides):

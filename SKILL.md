@@ -24,15 +24,80 @@ Always read all three files at the start of a session. If either config file doe
 
 ## Onboarding (first run only)
 
-If `~/.config/date-planning/preferences.json` doesn't exist, run onboarding before doing anything else. Keep it conversational — not a form. Ask these five things, one or two at a time:
+If `~/.config/date-planning/preferences.json` doesn't exist, run onboarding before doing anything else.
+
+### Step 1: Offer the taste profile
+
+Say something like:
+
+> "Before I plan anything, want to do a quick taste profile? I'll show you a handful of real Buffalo date scenarios — you just tell me if you'd be into it or not. Takes about 2 minutes and means I can skip a bunch of questions."
+
+If they say **yes**: run the taste profile (see below), then skip to hard constraints only.  
+If they say **no** or they're impatient to just get a suggestion: fall back to the 5-question form (see below), then proceed.
+
+---
+
+### Taste profile (if they opt in)
+
+Read `resources/taste-profile-sketches.json`. Present the 12 sketches in groups of 4, conversationally. For each sketch, ask for a reaction — keep it casual, not a survey:
+
+> Here are the first few — just tell me if each sounds appealing, fine, or not your thing:
+>
+> 1. *Renting bikes at the Outer Harbor and riding the waterfront trail along Lake Erie — an hour of moving around with the city skyline behind you, then food trucks in Larkinville*
+> 2. *Shea's Performing Arts for a Broadway touring show — the 1926 theater itself is stunning, and a pre-show dinner somewhere on Main Street before curtain*
+> 3. *An afternoon at the Buffalo AKG Art Museum — one of the best modern art collections in the country — then wandering Elmwood Village for coffee, maybe a bookstore, dinner at whatever looks good*
+> 4. *Canalside on a summer evening — outdoor concert, cold beers, the Erie Canal lit up, hanging out with a thousand other people all in a good mood*
+
+Accept any natural response: "love it", "yes!", "meh", "not really", "definitely not", "she'd love that", "we'd skip that", etc. Map to: `liked` / `neutral` / `disliked`.
+
+After all 12 reactions, run the inference algorithm:
+
+**Alcohol:**
+- ≥2 alcohol-tagged sketches disliked → `"no"`
+- ≥1 alcohol-tagged sketch liked and 0 disliked → `"yes"`
+- Otherwise → `"occasionally"`
+
+**Activity level:**
+- ≥2 "active"-tagged sketches liked, 0 disliked → `"active"`
+- ≥2 "active"-tagged sketches disliked → `"relaxed"`
+- Otherwise → `"moderate"`
+
+**Budget:**
+- "$$$"-tagged sketches liked + no cheap sketches liked → `"$$$"`
+- "free"/"$"-tagged liked + "$$$"-tagged disliked → `"$"`
+- Otherwise → `"$$"`
+
+**Interests:**
+- Any interest tag that appears in ≥2 liked sketches → add to interests list
+
+After inference, confirm aloud before saving:
+> "Based on your reactions, I'm reading: [activity level] dates, you [alcohol summary], and you're into [interests]. Budget around [$$]. Sound right?"
+
+Let them correct anything, then save.
+
+Seed `history.json` concept_reactions with the 12 reactions using sketch text as the idea and the axes.interests as tags. Set `reaction` to `"liked"` / `"neutral"` / `"disliked"` accordingly.
+
+Then ask only the one question that can't be inferred from sketches:
+
+> "Anything I should always avoid — dietary needs, mobility considerations, anything that's just off the table?"
+
+---
+
+### Fallback: 5-question form (if they skip the taste profile)
+
+Keep it conversational — not a form. Ask one or two at a time:
 
 1. **Alcohol**: "Do you drink alcohol, or would you prefer I steer away from bars and breweries?" → `"yes"` / `"no"` / `"occasionally"`
 2. **Activity level**: "How active do you like dates to be — hiking and biking, casual exploring and walking, or more sit-and-talk?" → `"active"` / `"moderate"` / `"relaxed"`
 3. **Budget**: "What's a typical date budget for you two?" → `"$"` (under $30) / `"$$"` ($30–80) / `"$$$"` ($80+)
 4. **Interests**: "What are 2–3 things you both genuinely enjoy?" (art, food, nature, live music, history, sports, architecture, theater, etc.)
-5. **Hard constraints**: "Anything I should always avoid — dietary needs, mobility considerations, places that are off the table?" → free text, or "nothing"
+5. **Hard constraints**: "Anything I should always avoid — dietary needs, mobility considerations, places that are off the table?"
 
-Once answered, create `~/.config/date-planning/` if needed, then write both files:
+---
+
+### Writing the config files
+
+Once answered (via either path), create `~/.config/date-planning/` if needed, then write both files:
 
 **preferences.json:**
 ```json

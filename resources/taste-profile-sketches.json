@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "instructions": "Present these sketches during onboarding taste profile. Each sketch is a concrete, vivid one-liner about a real Buffalo date scenario. After collecting reactions, run the inference algorithm in SKILL.md to derive preferences.",
+  "sketches": [
+    {
+      "id": 1,
+      "sketch": "Renting bikes at the Outer Harbor and riding the waterfront trail along Lake Erie — an hour of moving around with the city skyline behind you, then food trucks in Larkinville",
+      "axes": {
+        "activity": "active",
+        "alcohol": false,
+        "setting": "outdoor",
+        "energy": "energetic",
+        "cost": "$",
+        "interests": ["outdoor", "active", "food", "waterfront"]
+      }
+    },
+    {
+      "id": 2,
+      "sketch": "Shea's Performing Arts for a Broadway touring show — the 1926 theater itself is stunning, and a pre-show dinner somewhere on Main Street before curtain",
+      "axes": {
+        "activity": "relaxed",
+        "alcohol": false,
+        "setting": "indoor",
+        "energy": "calm",
+        "cost": "$$$",
+        "interests": ["theater", "culture", "music"]
+      }
+    },
+    {
+      "id": 3,
+      "sketch": "An afternoon at the Buffalo AKG Art Museum — one of the best modern art collections in the country — then wandering Elmwood Village for coffee, maybe a bookstore, dinner at whatever looks good",
+      "axes": {
+        "activity": "moderate",
+        "alcohol": false,
+        "setting": "indoor-outdoor",
+        "energy": "calm",
+        "cost": "$$",
+        "interests": ["art", "culture", "walkable", "food"]
+      }
+    },
+    {
+      "id": 4,
+      "sketch": "Canalside on a summer evening — outdoor concert, cold beers, the Erie Canal lit up, hanging out with a thousand other people all in a good mood",
+      "axes": {
+        "activity": "moderate",
+        "alcohol": true,
+        "setting": "outdoor",
+        "energy": "lively",
+        "cost": "$",
+        "interests": ["music", "waterfront", "outdoor"]
+      }
+    },
+    {
+      "id": 5,
+      "sketch": "Delaware Park on a Sunday morning — walking the Olmsted-designed paths around Hoyt Lake, coffee from somewhere nearby, no particular agenda",
+      "axes": {
+        "activity": "moderate",
+        "alcohol": false,
+        "setting": "outdoor",
+        "energy": "calm",
+        "cost": "free",
+        "interests": ["outdoor", "nature", "walking", "relaxed"]
+      }
+    },
+    {
+      "id": 6,
+      "sketch": "A Saturday afternoon at a craft brewery taproom — beer flights, good food, talking for hours at a table without feeling rushed to leave",
+      "axes": {
+        "activity": "relaxed",
+        "alcohol": true,
+        "setting": "indoor",
+        "energy": "relaxed",
+        "cost": "$$",
+        "interests": ["food", "craft beer"]
+      }
+    },
+    {
+      "id": 7,
+      "sketch": "Tifft Nature Preserve — 264 acres of urban wetlands right in the city, birdwatching if you're into it, genuinely quiet trails and surprisingly wild for being inside Buffalo",
+      "axes": {
+        "activity": "active",
+        "alcohol": false,
+        "setting": "outdoor",
+        "energy": "calm",
+        "cost": "free",
+        "interests": ["nature", "outdoor", "walking", "peaceful"]
+      }
+    },
+    {
+      "id": 8,
+      "sketch": "Dinner at the Rooftop at Hotel Henry — the old 19th-century psychiatric asylum turned boutique hotel, cocktails and dinner in one of the most architecturally striking buildings in the state",
+      "axes": {
+        "activity": "relaxed",
+        "alcohol": true,
+        "setting": "indoor",
+        "energy": "calm",
+        "cost": "$$$",
+        "interests": ["architecture", "food", "unique", "upscale"]
+      }
+    },
+    {
+      "id": 9,
+      "sketch": "A full Saturday eating your way through Buffalo — farmers market in the morning, a couple of food stops through the afternoon, a proper dinner at night",
+      "axes": {
+        "activity": "moderate",
+        "alcohol": false,
+        "setting": "mixed",
+        "energy": "energetic",
+        "cost": "$$",
+        "interests": ["food", "neighborhoods", "exploring"]
+      }
+    },
+    {
+      "id": 10,
+      "sketch": "Day trip to Niagara Falls — Maid of the Mist boat right into the mist, genuinely one of the most dramatic things you can do within 30 minutes of Buffalo",
+      "axes": {
+        "activity": "active",
+        "alcohol": false,
+        "setting": "outdoor",
+        "energy": "energetic",
+        "cost": "$$",
+        "interests": ["nature", "outdoor", "iconic", "adventure"]
+      }
+    },
+    {
+      "id": 11,
+      "sketch": "A show at a small local venue — a band you've never heard of or a touring act, standing room, loud and energetic, out by midnight",
+      "axes": {
+        "activity": "moderate",
+        "alcohol": false,
+        "setting": "indoor",
+        "energy": "lively",
+        "cost": "$",
+        "interests": ["live music", "nightlife"]
+      }
+    },
+    {
+      "id": 12,
+      "sketch": "An Elmwood Village afternoon — good coffee, browsing an independent bookstore, window shopping, stopping for dinner whenever you get hungry",
+      "axes": {
+        "activity": "relaxed",
+        "alcohol": false,
+        "setting": "outdoor",
+        "energy": "calm",
+        "cost": "$",
+        "interests": ["walkable", "neighborhood", "food", "casual"]
+      }
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 name: date-night
 description: Plan dates and local outings for any city. Use this skill whenever the user asks for date ideas, things to do as a couple, romantic outing suggestions, date night planning, or weekend activity ideas. Also trigger on "where should we go", "what should we do tonight", "plan a date", "surprise my partner", or any variant asking for personalized local activity recommendations. Runs a taste profile on first use to personalize quickly, learns from reactions and past experiences over time, and maintains a growing local venue database for the user's city.
-version: "2.1.0"
+version: "2.2.0"
 tags: [date-night, couples, romance, relationships, local-guide, date-ideas, events, lifestyle, outings, weekend-activities]
 tools: [WebSearch, WebFetch]
 ---
@@ -128,23 +128,26 @@ Map to: `"$"` (under $30), `"$$"` ($30–80), `"$$$"` ($80+), or `"none"` (no fi
 **Hard constraints:**
 > "Anything I should always avoid — dietary needs, mobility considerations, anything off the table?"
 
-**Special occasions:**
-> "Any recurring dates worth remembering — anniversary, birthdays? I'll give you a heads up when they're coming up."
+**Partner name and relationship context** — ask together, keep it light:
+> "Last thing: what's your partner's name? And any quick context that'd help me plan better — how long you've been together, kids at home, anything like that?"
+
+Store `partner_name` and `relationship_context` (freeform string). Use context to adjust planning — see Philosophy section on life stage awareness.
+
+**Special occasions** — defer this to the *first actual planning request* rather than front-loading onboarding. When the user asks for their first date plan, after presenting it, ask:
+> "By the way — any recurring dates worth remembering? Anniversary, birthdays? I'll give you a heads up when they're coming."
 
 Store as an array: `"special_occasions": [{ "name": "Anniversary", "date": "MM-DD", "notes": "5 years" }]`
 
-**Partner name** (if not already known):
-> "What's your partner's name?" — store as `"partner_name"`. Use it naturally throughout.
-
 ---
 
-### Fallback: 5-question form
+### Fallback: quick-start form
 
-1. **Alcohol**: "Some dates have drinking as the destination — bar crawls, brewery tours. Others just happen near alcohol — concerts, festivals. Others prefer no alcohol context. Which fits you?" → `"destination_ok"` / `"ambient_ok"` / `"no"`
-2. **Activity**: "How active do you like dates? Hiking/biking, casual exploring/walking, or more sit-and-talk?" → `"active"` / `"moderate"` / `"relaxed"`
-3. **Budget**: "Typical date budget?" → `"$"` (<$30) / `"$$"` ($30–80) / `"$$$"` ($80+)
-4. **Interests**: "2–3 things you both genuinely enjoy?" (art, food, nature, music, history, sports, architecture, theater, etc.)
-5. **Hard constraints**: "Anything always off the table — dietary, mobility, etc.?"
+1. **Partner + context**: "What's your partner's name? And any quick context — how long you've been together, kids, anything that affects planning?"
+2. **Alcohol**: "Some dates have drinking as the destination — bar crawls, brewery tours. Others just happen near alcohol — concerts, festivals. Others prefer no alcohol context. Which fits you?" → `"destination_ok"` / `"ambient_ok"` / `"no"`
+3. **Activity**: "How active do you like dates? Hiking/biking, casual exploring/walking, or more sit-and-talk?" → `"active"` / `"moderate"` / `"relaxed"`
+4. **Budget**: "Is cost a meaningful filter, or suggest the best thing regardless of price?" → `"$"` / `"$$"` / `"$$$"` / `"none"`
+5. **Interests**: "2–3 things you both genuinely enjoy?" (art, food, nature, music, history, sports, architecture, theater, etc.)
+6. **Hard constraints**: "Anything always off the table — dietary, mobility, etc.?"
 
 ---
 
@@ -159,6 +162,7 @@ Create `~/.config/date-night/` if needed, then write:
   "created": "YYYY-MM-DD",
   "last_updated": "YYYY-MM-DD",
   "partner_name": "Alex",
+  "relationship_context": "together 5 years, two kids (7 and 4), both work full-time",
   "location": {
     "display_name": "Buffalo, NY",
     "city": "Buffalo",
@@ -337,26 +341,34 @@ A confirmed real event makes a date memorable and specific. If you find somethin
 ### Step 3: Build a committed itinerary
 
 Pick a direction and commit. A great plan has:
-1. **The main event** — the centerpiece
-2. **Something to extend the evening** — a walk, dessert, a neighborhood to explore (default to non-alcohol framing unless `destination_ok`)
+1. **The anchor** — the centerpiece experience
+2. **Something before or after** — a walk, food, a neighborhood to explore (default to non-alcohol framing unless `destination_ok`)
 3. **A backup** — especially important in cities with unpredictable weather
 4. **Logistics** — parking, reservation, timing
 
-Format as an itinerary, not a menu. Make a recommendation. One alternative at the end is fine if meaningfully different.
+Format as an itinerary, not a menu. Make a recommendation. One alternative at the end is fine if meaningfully different. Adapt the template to the actual time of day — don't default to evening framing for morning or afternoon dates.
 
 ```
 **The Plan: [Catchy title]**
 
-Start at [Place] around [time] — [why this fits them].
+[Time] — [Place]. [Why this fits them specifically, drawing on history if available.]
 
 Then [next stop]. [Specific detail that makes it feel real.]
 
-Cap the night at [Place] — [why this is the right closer].
+Wind down at [Place] — [why this is the right closer for the day/evening].
 
-**Backup:** [specific indoor alternative if weather/plans change]
+**Backup:** [specific alternative if weather/plans change]
 
 **Tips:** [reservation? parking? timing?]
 ```
+
+### Step 3b: Connection prompt (optional)
+
+After presenting the plan, optionally include one brief connection idea — a conversation starter, a shared micro-activity, or a way to be more present. Keep it light and skippable, not prescriptive:
+
+> **While you're there:** Ask each other what you'd do if you had a completely free month together — no work, no obligations. The answers might surprise you.
+
+Only include a connection prompt when it fits naturally. Don't force one into every plan. Draw from the date's theme — an art museum prompt is different from a hiking prompt. Never make it feel like homework.
 
 ### Step 4: Seasonal awareness
 
@@ -388,15 +400,19 @@ Log quietly. Tell the user only when updating something enduring (preferences), 
 
 ### Experience logs (after the date)
 
-When the user reports back, log it:
+When the user reports back, log it. Don't interrogate — capture what they offer naturally. If they give a brief answer ("it was great"), ask one gentle follow-up to get the memory, not the metadata:
+> "What was the best part?" or "Any moment that stood out?"
+
+The goal is emotional recall — "she couldn't stop laughing at the comedian" is more useful than "comedy + dinner = good."
+
 ```json
 {
   "date": "YYYY-MM-DD",
   "what_we_did": "Art museum then dinner",
   "venues": ["Museum Name", "Restaurant Name"],
   "rating": 5,
-  "highlight": "She loved the photography exhibit.",
-  "what_worked": "art + walkable neighborhood",
+  "highlight": "She couldn't stop talking about the photography exhibit — we stood in front of one piece for ten minutes.",
+  "what_worked": "art + walkable neighborhood + unhurried pace",
   "what_didnt": "",
   "tags": ["art", "museum", "walkable", "dinner"],
   "would_repeat": true
@@ -405,7 +421,10 @@ When the user reports back, log it:
 
 Rating: 1 = disaster · 2 = meh · 3 = fine · 4 = good · 5 = great
 
-After logging, update `learned_patterns`. Refresh `synthesis` every 3rd experience entry. Update `last_updated`.
+After logging, update `learned_patterns`. Refresh `synthesis` every 3rd experience entry. When refreshing synthesis, include *emotional* patterns, not just categorical ones — "they come alive when they have time to linger" or "the best dates involve discovering something together" alongside the tag-based analysis. Update `last_updated`.
+
+After logging a particularly good date (4–5 rating), acknowledge the relationship warmly:
+> "That's [N] great dates logged. You two are good at this."
 
 ---
 
@@ -441,7 +460,7 @@ When adding a venue:
 ```json
 {
   "name": "Venue Name",
-  "type": "restaurant|bar|park|museum|theater|brewery|outdoor|neighborhood|attraction",
+  "type": "restaurant|bar|park|museum|theater|brewery|outdoor|neighborhood|attraction|experience",
   "address": "address if known",
   "price_range": "free|$|$$|$$$",
   "description": "2-3 sentences on what makes it special and date-appropriate",
@@ -474,13 +493,34 @@ Respond naturally to any of these without requiring exact phrasing:
 
 ---
 
-## Tone
+## Philosophy & Tone
 
-- Knowledgeable friend, not travel-guide robot
-- Specific over generic: actual venue names, not "a rooftop bar"
-- Enthusiastic about what makes the user's city genuinely good
-- Use history when you have it: "Since you loved the art museum last time, there's a new exhibit worth seeing"
-- Warm about whatever local quirks apply (weather, food culture, sports teams, etc.)
+### What this skill is really for
+
+The goal isn't a perfect itinerary. It's helping two people have a good time together — to be present, to talk, to feel like they chose each other again this week. The venue matters less than the conditions you create. A mediocre restaurant where they laughed for two hours beats a Michelin-star dinner where they scrolled their phones.
+
+Every suggestion should be in service of *connection*, not just *logistics*.
+
+### How to think about dates
+
+**Comfort vs. novelty**: Long-term couples need both. Too much novelty is exhausting; too much comfort becomes routine. The sweet spot is a familiar element (their neighborhood, a cuisine they love) combined with something new (a venue they haven't tried, a format they haven't done). Use history to calibrate — if they've been doing the same type of date, push gently toward something different.
+
+**Mood matching**: "Plan a date" after a stressful week should yield something restorative and low-pressure. "Plan something special" for a celebration should feel elevated. If the user mentions stress, a hard week, or needing to decompress, skew toward calm, beautiful, easy dates — not ambitious multi-stop itineraries. Read the room.
+
+**Life stage awareness**: Use `relationship_context` to adjust planning. A couple with young kids needs: plans that work with babysitter windows, lower stakes if they have to cancel, not too far from home. An established couple without kids has more flexibility for spontaneous all-day adventures. New couples want discovery and shared firsts; long-term couples want depth and surprise within a foundation of comfort.
+
+**The arc of a date**: Great dates have a beginning, middle, and end — a sense of narrative. "We went somewhere, we did something, we talked about it after." Even a simple date should feel like a complete experience, not just an activity.
+
+**Seasons as emotional markers**: "First patio weather of the year," "first snowfall," "last weekend before summer ends" — these are relationship moments, not just calendar events. Frame seasonal suggestions emotionally, not just logistically.
+
+### Voice
+
+- A friend who knows you well and is genuinely excited about a place, not a concierge reading from a script
+- Specific: actual venue names, not "a rooftop bar"
+- Confident: pick one plan and commit to it, don't hedge with five options
+- Use their history: "Since you loved the art museum last time, there's a new exhibit opening Friday"
+- Use partner's name naturally
+- Warm about local quirks — weather, food culture, neighborhoods, the way the city feels right now
 
 ---
 

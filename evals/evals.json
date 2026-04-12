@@ -112,6 +112,113 @@
           "type": "llm"
         }
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "I want to surprise my partner with something special this Saturday. She loves hands-on creative experiences and hates loud crowded bars.",
+      "expected_output": "A single committed date recommendation (not a list of options) framed around surprising the partner. Should pick one specific plan, explain why it fits her specifically, and not ask many clarifying questions. Should avoid bars and loud venues entirely.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "single_committed_recommendation",
+          "description": "Response gives ONE specific plan rather than multiple options or a list to choose from",
+          "type": "llm"
+        },
+        {
+          "name": "no_bars_or_loud_venues",
+          "description": "Suggested plan contains no bars, breweries, or loud crowded venues",
+          "type": "llm"
+        },
+        {
+          "name": "framed_for_surprise",
+          "description": "Response is framed around the partner's enjoyment and why this will land well for her, not generic date advice",
+          "type": "llm"
+        },
+        {
+          "name": "hands_on_or_creative_element",
+          "description": "Plan includes a hands-on, creative, interactive, or experiential element matching what was stated about the partner",
+          "type": "llm"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "We went on that date last Saturday — dinner and a show. It was really good, like an 8 out of 10. The dinner was perfect, show was great but the venue was a bit loud for our taste during intermission.",
+      "expected_output": "Skill logs the experience, extracts the signal (dinner + show = works well, loud intermission = note for next time), updates learned_patterns, and confirms what was saved. Should NOT ask a bunch of follow-up questions — just log what was shared and acknowledge.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "logs_experience",
+          "description": "Response confirms that the date has been logged to history",
+          "type": "llm"
+        },
+        {
+          "name": "captures_noise_signal",
+          "description": "Response acknowledges or extracts the signal about the loud venue/intermission as a preference note",
+          "type": "llm"
+        },
+        {
+          "name": "no_excessive_followup",
+          "description": "Response does not ask more than one optional follow-up question — it logs what was given and moves on",
+          "type": "llm"
+        },
+        {
+          "name": "acknowledges_what_worked",
+          "description": "Response notes that the dinner+show format worked well for them",
+          "type": "llm"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "We're visiting Chicago this weekend — any ideas for a Saturday afternoon and evening?",
+      "expected_output": "Skill plans for Chicago without overwriting the user's home config. Should either explicitly state it's planning for Chicago as a temporary session, or proceed naturally with Chicago-specific suggestions. Should NOT suggest Buffalo venues or ask about relocating.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "chicago_specific_suggestions",
+          "description": "Suggestions are specific to Chicago, not generic or Buffalo-based",
+          "type": "llm"
+        },
+        {
+          "name": "no_config_overwrite_implied",
+          "description": "Response does not suggest updating the user's home location or imply permanent changes to their profile",
+          "type": "llm"
+        },
+        {
+          "name": "itinerary_format",
+          "description": "Response provides a coherent Saturday afternoon + evening plan, not just a list of Chicago attractions",
+          "type": "llm"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Our anniversary is coming up in two weeks. It's our 5th — I want to do something really special, not our usual dinner-and-a-show.",
+      "expected_output": "Skill recognizes this as a special occasion warranting extra thoughtfulness. Should acknowledge the significance (5th anniversary), push outside the 'dinner and a show' pattern since that's been flagged as their usual, and suggest something more meaningful or ambitious. Should feel like a friend who knows them, not a generic 'romantic date' suggestion.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "acknowledges_significance",
+          "description": "Response treats the 5th anniversary as genuinely special, not just another date night",
+          "type": "llm"
+        },
+        {
+          "name": "breaks_from_usual_pattern",
+          "description": "Suggestion is notably different from a standard dinner + show format, given that the user explicitly asked for something different",
+          "type": "llm"
+        },
+        {
+          "name": "specific_and_committed",
+          "description": "Response gives a specific plan with real venues or experience types, not generic romantic suggestions",
+          "type": "llm"
+        },
+        {
+          "name": "elevated_ambition",
+          "description": "Plan feels appropriately elevated for a milestone anniversary — more thought, more intentional, not just a nicer restaurant",
+          "type": "llm"
+        }
+      ]
     }
   ]
 }

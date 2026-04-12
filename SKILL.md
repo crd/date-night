@@ -3,6 +3,7 @@ name: date-planning
 description: Plan dates and local outings for any city. Use this skill whenever the user asks for date ideas, things to do as a couple, romantic outing suggestions, date night planning, or weekend activity ideas. Also trigger on "where should we go", "what should we do tonight", "plan a date", or any variant asking for personalized local activity recommendations. Runs a taste profile on first use to personalize quickly, learns from reactions and past experiences over time, and maintains a growing local venue database for the user's city.
 version: "2.0.0"
 tags: [dating, local-guide, lifestyle, events, outings]
+tools: [WebSearch, WebFetch]
 ---
 
 # Date Planning
@@ -78,30 +79,32 @@ Read `resources/taste-profile-sketches.json`. These describe activity types, not
 
 Map to: `"destination_ok"` / `"ambient_ok"` / `"no"`
 
-Then present the 12 sketches in 3 groups of 4. Use casual framing like:
-> "Here are the first few — just say if each sounds great, fine, or not your thing:"
+Then present the 12 sketches in 3 groups of 4. Introduce the scale once before the first group, then include it as a reminder at the top of each subsequent group:
 
-Accept natural responses: "love it", "yes!", "meh", "not really", "skip", "she'd love that", etc. Map to `liked` / `neutral` / `disliked`.
+> "Here are the first four — rate each 1–5: 1=not for us · 2=probably not · 3=sure, fine · 4=yeah good · 5=love it"
+
+Accept natural responses too ("love it", "meh", "skip") and map them to the scale.
+
+For inference, map scores to: 4–5 → `liked`, 3 → `neutral`, 1–2 → `disliked`. Store the raw numeric score in concept_reactions (`"score": 4`).
 
 **Inference after all 12:**
 
 *Activity level:*
-- ≥2 "active"-tagged liked, more liked than disliked → `"active"`
-- ≥2 "active"-tagged disliked, more disliked than liked → `"relaxed"`
+- ≥2 "active"-tagged liked (4–5), more liked than disliked → `"active"`
+- ≥2 "active"-tagged disliked (1–2), more disliked than liked → `"relaxed"`
 - Otherwise → `"moderate"`
-
-*Budget:*
-- "$$$"-tagged liked AND no "free"/"$"-tagged liked → `"$$$"`
-- "free"/"$"-tagged liked AND "$$$"-tagged disliked → `"$"`
-- Otherwise → `"$$"`
 
 *Interests:*
 - Any interest tag in ≥1 liked sketch → add to interests
 
-Confirm before saving:
-> "Based on your reactions: [activity level] activity, [alcohol], interested in [interests], budget around [$$]. Sound right?"
+Confirm the inferred preferences, then ask two explicit follow-up questions:
 
-Let them correct, then ask the one remaining question:
+**Budget** — ask directly, don't infer:
+> "One more thing: is budget a meaningful filter for you? Some people have a rough 'typical night out' number in mind; others don't want to limit by cost at all. What fits you?"
+
+Map to: `"$"` (under $30), `"$$"` ($30–80), `"$$$"` ($80+), or `"none"` (no filter — suggest anything). If they say "no filter" or "money isn't a concern", store `"none"` and never filter suggestions by price.
+
+**Hard constraints:**
 > "Anything I should always avoid — dietary needs, mobility considerations, anything off the table?"
 
 ---
@@ -138,7 +141,7 @@ Create `~/.config/date-planning/` if needed, then write:
   },
   "alcohol": "ambient_ok",
   "activity_level": "moderate",
-  "budget_typical": "$$",
+  "budget_typical": "$$",  // "$" | "$$" | "$$$" | "none" (no filter)
   "interests": ["art", "food", "live music"],
   "hard_constraints": {
     "avoids": [],
@@ -209,6 +212,7 @@ City resource files contain:
 
 - `activity_level: "relaxed"` → sit-down experiences, gentle walks
 - `activity_level: "active"` → hiking, biking, exploring
+- `budget_typical: "none"` → never filter by price; suggest the best option regardless of cost
 - `interests` → surface matching venues first
 - `hard_constraints.avoids` → never suggest, ever
 
@@ -241,24 +245,36 @@ One question max.
 
 ### Step 2: Check for current events
 
-For time-sensitive dates (this week/weekend), check what's actually happening:
+**Always fetch real events — never invent them.** If the user is planning for a specific date or date range, only suggest events that are actually confirmed to be happening on those dates. Do not suggest hypothetical events ("there's often a farmers market...") or events from your training data — these may be outdated or simply wrong. If you can't confirm an event is real and scheduled, describe the *venue* or *type of activity* instead, and be explicit that you're suggesting a standing option rather than a specific event.
 
-**Eventbrite** (primary for current events — works for any city). Use the coordinate-based bounding box with the user's stored radius:
+For any date request (specific day, this weekend, next Saturday, etc.):
+- Treat the date as a filter — only surface events confirmed for that window
+- If the user's date is more than a few days out and Eventbrite doesn't show results yet, say so and offer to re-check closer to the date, then fall back to venue-based planning
+
+**Fetching events:**
+
+Use Eventbrite with the coordinate-based bounding box:
 ```
 https://www.eventbrite.com/d/events?location.latitude={lat}&location.longitude={lon}&location.within={search_radius_miles}mi
 ```
+
+For a specific date, also try a targeted web search:
+```
+things to do in [city] [specific date or "this weekend"] [interests]
+```
+
+**City-specific event sites** (from `websites` in the city resource file):
+- Check these too — they often surface gallery openings, neighborhood events, and seasonal programming that Eventbrite misses
+- These are higher-signal for locals than Eventbrite's aggregator results
 
 Fallback city-page URL if coordinate search fails:
 ```
 https://www.eventbrite.com/d/{eventbrite_slug}/all-events/
 ```
 
-**City-specific event sites** (from `websites` in the city resource file — these are higher quality for local cities that have good local guides):
-- Check these after Eventbrite; they often surface things Eventbrite misses (neighborhood events, gallery openings, seasonal programming)
+If all fetches fail: proceed with venue-based planning, note that live events couldn't be checked, and don't guess at what might be happening.
 
-If WebFetch fails: proceed with the venue database and note that live events couldn't be checked.
-
-A specific current event makes a date memorable. If you find something good, build the plan around it.
+A confirmed real event makes a date memorable and specific. If you find something good that fits their profile, build the plan around it.
 
 ### Step 3: Build a committed itinerary
 

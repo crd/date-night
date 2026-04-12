@@ -1,7 +1,7 @@
 {
   "metadata": {
     "region": "Buffalo, NY and Western New York",
-    "last_updated": "2026-04-11",
+    "last_updated": "2026-04-12",
     "version": 1
   },
   "websites": [
@@ -25,9 +25,93 @@
         "https://buffalowaterfront.com/events/",
         "https://buffalowaterfront.com/explore/"
       ]
+    },
+    {
+      "name": "Buffalo Rising",
+      "url": "https://www.buffalorising.com/events/",
+      "description": "Community-driven event calendar for Buffalo with a strong focus on arts, music, and performance. Often surfaces neighborhood events and gallery openings that bigger aggregators miss.",
+      "best_for": ["arts events", "music", "neighborhood happenings", "gallery openings", "performances"]
+    },
+    {
+      "name": "We Are Buffalo",
+      "url": "https://wearebuffalo.net/2026-event-calendar/",
+      "description": "Annual event guide for Western New York covering festivals, food, music, and seasonal highlights across the region.",
+      "best_for": ["festivals", "seasonal events", "WNY regional events"]
     }
   ],
   "venues": [
+    {
+      "name": "Share Kitchen & Bar Room",
+      "type": "restaurant",
+      "address": "5590 Main St, Williamsville, NY 14221",
+      "price_range": "$$$",
+      "description": "Contemporary American small plates and exceptional wine in Williamsville — 5 minutes from East Amherst. 4.9 stars on OpenTable. Reviewers compare it to the best SoHo NYC bistros. The closest Prescott's Provisions-caliber option near home. Closed Mon/Sun; dinner service Tue–Sat from 4pm.",
+      "tags": ["dinner", "upscale", "small plates", "wine", "Williamsville", "local", "date night", "neighborhood gem"],
+      "website": "https://sharekbr.com/"
+    },
+    {
+      "name": "The Bijou",
+      "type": "restaurant",
+      "address": "643 Main St, Buffalo, NY 14203",
+      "price_range": "$$",
+      "description": "Contemporary American restaurant directly across from Shea's in the Theater District. Chef-driven menu that rotates monthly, relaxed upscale vibe. The go-to pre-show dinner spot — book via OpenTable and mention your show time for good pacing.",
+      "tags": ["dinner", "pre-show", "theater district", "downtown", "American", "date night", "Shea's"],
+      "website": "https://www.thebijou716.com/"
+    },
+    {
+      "name": "Bacchus Wine Bar & Restaurant",
+      "type": "restaurant",
+      "address": "56 W Chippewa St, Buffalo, NY 14202",
+      "price_range": "$$$",
+      "description": "Upscale wine bar and restaurant on Chippewa Street. Elegant setting, strong wine list, excellent for a pre-show dinner or a destination evening on its own. Takes reservations via OpenTable.",
+      "tags": ["dinner", "upscale", "wine", "downtown", "romantic", "pre-show", "date night"],
+      "website": null
+    },
+    {
+      "name": "Forbes Theater",
+      "type": "theater",
+      "address": "512 Pearl St, Buffalo, NY 14202",
+      "price_range": "$$",
+      "description": "Intimate downtown Buffalo theater hosting candlelight concerts, immersive performances, and touring shows. The candlelight concert series (via Fever) is especially date-friendly — string quartet arrangements of popular artists in a romantic setting.",
+      "tags": ["live music", "performing arts", "intimate venue", "downtown", "candlelight", "unique experience", "theater"],
+      "website": null
+    },
+    {
+      "name": "Camille Le Caër Private Chef",
+      "type": "experience",
+      "address": "Buffalo, NY area",
+      "price_range": "$$$",
+      "description": "Private chef offering cooking classes and catering in the Buffalo area. Classes like croissant-making are hands-on, intimate, and genuinely fun as a couple's activity. Check website for upcoming class schedule.",
+      "tags": ["cooking class", "hands-on", "interactive", "culinary", "unique experience", "gift", "intimate"],
+      "website": "https://www.camilleprivatechef.com/"
+    },
+    {
+      "name": "East Aurora (village)",
+      "type": "neighborhood",
+      "address": "East Aurora, NY 14052",
+      "price_range": "$-$$",
+      "description": "Charming small town about 30 miles southeast of Buffalo. Main Street has independent shops, galleries, good restaurants, and strong local character. Great for a casual half-day or full-day date with a relaxed walkable pace.",
+      "tags": ["walkable", "neighborhood", "local shops", "casual", "day trip", "food", "small town", "East Aurora"],
+      "website": null
+    },
+    {
+      "name": "Elm Street Bakery",
+      "type": "restaurant",
+      "address": "East Aurora, NY",
+      "price_range": "$",
+      "description": "Beloved artisan bakery in East Aurora with a strong local following. Great for a casual start or stop on an East Aurora day — exceptional baked goods, strong coffee, relaxed atmosphere.",
+      "tags": ["bakery", "artisan", "casual", "local", "East Aurora", "coffee", "breakfast", "brunch"],
+      "website": null
+    },
+    {
+      "name": "Rooftop at Blue Eyed Baker",
+      "type": "restaurant",
+      "address": "East Aurora, NY",
+      "price_range": "$$",
+      "description": "Rooftop dining in East Aurora — elevated casual setting that adds a memorable dimension to a village day out. Good for lunch or a relaxed afternoon meal.",
+      "tags": ["rooftop", "casual", "East Aurora", "lunch", "unique setting", "local", "day trip"],
+      "website": null
+    },
     {
       "name": "Canalside",
       "type": "outdoor/venue",
@@ -157,8 +241,8 @@
   },
   "seasonal_highlights": {
     "spring": ["Delaware Park (cherry blossoms)", "Elmwood Village stroll", "Tifft Nature Preserve (migrating birds)"],
-    "summer": ["Canalside concerts", "Outer Harbor", "Larkin Square Food Truck Tuesdays", "Niagara Falls", "Waterfront events"],
-    "fall": ["Delaware Park foliage", "Elmwood Village", "Niagara Falls (less crowded)", "Tifft Nature Preserve"],
+    "summer": ["Canalside concerts", "Outer Harbor", "Larkin Square Food Truck Tuesdays", "Niagara Falls", "Waterfront events", "Holiday Valley gondola rides (Ellicottville — mountaintop walks, great views, charming village below)"],
+    "fall": ["Delaware Park foliage", "Elmwood Village", "Niagara Falls (less crowded)", "Tifft Nature Preserve", "Makers and Shakers market at Canalside (stepoutbuffalo.com/fall-makers-shakers — local artisan/craft market, confirmed hit)", "Holiday Valley gondola rides (Ellicottville — scenic fall foliage from the summit)"],
     "winter": ["Canalside ice skating", "Shea's (indoor theater season)", "Albright-Knox", "Hotel Henry (cozy)"]
   }
 }

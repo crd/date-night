@@ -1,8 +1,8 @@
 ---
-name: date-planning
-description: Plan dates and local outings for any city. Use this skill whenever the user asks for date ideas, things to do as a couple, romantic outing suggestions, date night planning, or weekend activity ideas. Also trigger on "where should we go", "what should we do tonight", "plan a date", or any variant asking for personalized local activity recommendations. Runs a taste profile on first use to personalize quickly, learns from reactions and past experiences over time, and maintains a growing local venue database for the user's city.
-version: "2.0.0"
-tags: [dating, local-guide, lifestyle, events, outings]
+name: date-night
+description: Plan dates and local outings for any city. Use this skill whenever the user asks for date ideas, things to do as a couple, romantic outing suggestions, date night planning, or weekend activity ideas. Also trigger on "where should we go", "what should we do tonight", "plan a date", "surprise my partner", or any variant asking for personalized local activity recommendations. Runs a taste profile on first use to personalize quickly, learns from reactions and past experiences over time, and maintains a growing local venue database for the user's city.
+version: "2.1.0"
+tags: [date-night, couples, romance, relationships, local-guide, date-ideas, events, lifestyle, outings, weekend-activities]
 tools: [WebSearch, WebFetch]
 ---
 

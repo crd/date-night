@@ -1,0 +1,6 @@
+# Never commit user personal data
+resources/user-profile.json
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,117 @@
+{
+  "skill_name": "date-planning",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "My friends are visiting Buffalo from NYC this Saturday evening — first time here. They're a couple, want something romantic and a little unique. Budget is around $100 total for the two of them. Any ideas?",
+      "expected_output": "A specific, itinerary-style date plan for Saturday evening that highlights something genuinely Buffalo-specific and unique (not generic 'go to a nice restaurant' advice). Should name real venues, include a before/after, and feel like advice from a local friend.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "names_specific_buffalo_venues",
+          "description": "Response names at least 2 specific Buffalo venues by their actual name, not generic descriptions",
+          "type": "llm"
+        },
+        {
+          "name": "itinerary_format",
+          "description": "Response is structured as a cohesive itinerary with a main event plus something before or after, not just a bulleted list of unconnected options",
+          "type": "llm"
+        },
+        {
+          "name": "budget_respected",
+          "description": "The suggested plan is plausibly achievable within the $100 budget stated",
+          "type": "llm"
+        },
+        {
+          "name": "includes_backup_or_tip",
+          "description": "Response includes at least one practical tip (reservation, parking, timing) or a backup plan",
+          "type": "llm"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Need a free or cheap date idea for tomorrow afternoon in Buffalo. I'd prefer outdoors if possible but it's April in Buffalo so I probably need a rain backup. We've been together 3 years, nothing too fancy.",
+      "expected_output": "A casual outdoor date plan for a long-term couple with a concrete backup for rainy weather. Should show awareness of Buffalo's April weather and the vibe of a comfortable, established relationship.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "outdoor_primary_option",
+          "description": "Primary suggestion is an outdoor activity appropriate for spring in Buffalo",
+          "type": "llm"
+        },
+        {
+          "name": "explicit_rain_backup",
+          "description": "Response explicitly names a specific indoor backup option, not just 'have a backup plan'",
+          "type": "llm"
+        },
+        {
+          "name": "free_or_low_cost",
+          "description": "Suggested activities are free or genuinely cheap (under ~$30 total)",
+          "type": "llm"
+        },
+        {
+          "name": "acknowledges_april_weather",
+          "description": "Response shows awareness that April in Buffalo can be cold or rainy, not treating it like a warm spring day",
+          "type": "llm"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Planning a full day date in Buffalo for a Saturday in July. My partner is really into craft beer and local food culture — she'd happily spend all day eating and drinking her way around the city. Make it a whole day thing, morning through evening.",
+      "expected_output": "A full-day itinerary centered on craft beer and local food, with multiple stops spanning morning through evening. Should feel like a thoughtful food tour of Buffalo with specific venues and a natural flow to the day.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "full_day_arc",
+          "description": "Response covers at least 3 distinct time periods (e.g., morning, afternoon, evening) with different venues",
+          "type": "llm"
+        },
+        {
+          "name": "craft_beer_featured",
+          "description": "At least one specific Buffalo craft brewery is named and featured prominently in the plan",
+          "type": "llm"
+        },
+        {
+          "name": "local_food_focus",
+          "description": "Suggestions emphasize locally distinctive Buffalo food, not generic chain restaurants",
+          "type": "llm"
+        },
+        {
+          "name": "july_summer_awareness",
+          "description": "Plan takes advantage of summer/July in Buffalo (outdoor venues, waterfront, summer events)",
+          "type": "llm"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Hey, we need a date idea for this Friday night. We don't really drink so skip the bar/brewery stuff. Last time we went somewhere loud it was a disaster — we could barely talk all night. Looking for something with good energy but where we can actually have a conversation.",
+      "expected_output": "A date plan that completely avoids bars and breweries, avoids loud venues, and suggests something with atmosphere where conversation is easy. Should ideally also mention that these preferences will be saved for future planning.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "no_bars_or_breweries",
+          "description": "Response does NOT suggest any bars or breweries as primary or backup options",
+          "type": "llm"
+        },
+        {
+          "name": "conversational_atmosphere",
+          "description": "Suggested venues are described as good for conversation, not loud or overwhelming",
+          "type": "llm"
+        },
+        {
+          "name": "saves_preferences_to_profile",
+          "description": "Response mentions saving the no-bars and no-loud-venues preferences to the user profile for future use",
+          "type": "llm"
+        },
+        {
+          "name": "specific_venue_named",
+          "description": "At least one specific named Buffalo venue is recommended, not a generic type",
+          "type": "llm"
+        }
+      ]
+    }
+  ]
+}

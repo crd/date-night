@@ -1,0 +1,164 @@
+{
+  "metadata": {
+    "region": "Buffalo, NY and Western New York",
+    "last_updated": "2026-04-11",
+    "version": 1
+  },
+  "websites": [
+    {
+      "name": "Step Out Buffalo",
+      "url": "https://stepoutbuffalo.com/",
+      "description": "Comprehensive entertainment and lifestyle guide for Buffalo and WNY. Covers events, restaurants, bars, things to do, date ideas, and local lifestyle. Has a dedicated 'Date Ideas' content hub.",
+      "best_for": ["events", "date ideas", "restaurants", "bars", "things to do", "current happenings"],
+      "notable_sections": [
+        "https://stepoutbuffalo.com/category/date-ideas/",
+        "https://stepoutbuffalo.com/category/eat-drink/",
+        "https://stepoutbuffalo.com/best-things-to-do-this-weekend-in-buffalo/"
+      ]
+    },
+    {
+      "name": "Buffalo Waterfront",
+      "url": "https://buffalowaterfront.com/",
+      "description": "Guide to Canalside and Outer Harbor waterfront areas. Events, dining, outdoor activities, concerts, skating, biking, and scenic strolls along Lake Erie.",
+      "best_for": ["outdoor dates", "waterfront activities", "summer events", "concerts", "scenic spots"],
+      "notable_sections": [
+        "https://buffalowaterfront.com/events/",
+        "https://buffalowaterfront.com/explore/"
+      ]
+    }
+  ],
+  "venues": [
+    {
+      "name": "Canalside",
+      "type": "outdoor/venue",
+      "address": "44 Prime St, Buffalo, NY 14202",
+      "price_range": "free-$$",
+      "description": "Buffalo's premier waterfront entertainment district on the Erie Canal. Year-round programming: ice skating in winter, concerts and festivals in summer, kayaking, and weekly events.",
+      "tags": ["waterfront", "outdoor", "seasonal", "free", "romantic", "active", "music", "skating", "summer", "winter"],
+      "website": "https://buffalowaterfront.com/canalside/"
+    },
+    {
+      "name": "Outer Harbor",
+      "type": "outdoor/park",
+      "address": "1 Naval Park Cove, Buffalo, NY 14202",
+      "price_range": "free-$",
+      "description": "Expansive waterfront park on Lake Erie with bike trails, food trucks, stunning city skyline views, sunset watching, and seasonal events.",
+      "tags": ["waterfront", "outdoor", "biking", "sunset", "romantic", "picnic", "free", "scenic", "summer"],
+      "website": "https://buffalowaterfront.com/outer-harbor/"
+    },
+    {
+      "name": "Elmwood Village",
+      "type": "neighborhood",
+      "address": "Elmwood Ave, Buffalo, NY",
+      "price_range": "$-$$$",
+      "description": "Walkable neighborhood with independent boutiques, coffee shops, art galleries, and diverse restaurants. Great for a stroll-and-explore date.",
+      "tags": ["walkable", "shopping", "coffee", "restaurants", "art", "casual", "neighborhood", "all-seasons"],
+      "website": "https://elmwoodvillage.org/"
+    },
+    {
+      "name": "Albright-Knox Art Gallery (Buffalo AKG Art Museum)",
+      "type": "museum",
+      "address": "1285 Elmwood Ave, Buffalo, NY 14222",
+      "price_range": "$$",
+      "description": "World-class modern and contemporary art museum recently expanded. Stunning architecture, impressive permanent collection, rotating exhibitions.",
+      "tags": ["art", "museum", "indoor", "culture", "rainy day", "intellectual", "romantic"],
+      "website": "https://buffaloakg.org/"
+    },
+    {
+      "name": "Delaware Park",
+      "type": "park",
+      "address": "Delaware Park, Buffalo, NY 14222",
+      "price_range": "free",
+      "description": "Frederick Law Olmsted-designed park with a lake, walking paths, rose garden, and Hoyt Lake. Beautiful in every season.",
+      "tags": ["outdoor", "free", "scenic", "walking", "picnic", "romantic", "all-seasons", "lake"],
+      "website": null
+    },
+    {
+      "name": "Niagara Falls State Park",
+      "type": "attraction/park",
+      "address": "Niagara Falls, NY 14303",
+      "price_range": "$-$$",
+      "description": "One of the world's most spectacular natural wonders, 30 min from Buffalo. Maid of the Mist boat tour, Cave of the Winds, illumination at night, Illuminated Falls.",
+      "tags": ["iconic", "nature", "scenic", "day trip", "romantic", "waterfall", "outdoor", "walking"],
+      "website": "https://www.niagarafallsstatepark.com/"
+    },
+    {
+      "name": "Larkinville / Larkin Square",
+      "type": "outdoor/venue",
+      "address": "745 Seneca St, Buffalo, NY 14210",
+      "price_range": "free-$$",
+      "description": "Revitalized neighborhood hub with outdoor food truck Tuesdays (summer), concerts, markets, and community events in a historic industrial setting.",
+      "tags": ["food trucks", "outdoor", "summer", "music", "community", "casual", "evening"],
+      "website": "https://larkinsquare.com/"
+    },
+    {
+      "name": "The Rooftop at Hotel Henry",
+      "type": "bar/restaurant",
+      "address": "444 Forest Ave, Buffalo, NY 14213",
+      "price_range": "$$$",
+      "description": "Rooftop bar and restaurant inside the historic Hotel Henry (former State Asylum). Stunning architecture, creative cocktails, unique atmosphere.",
+      "tags": ["rooftop", "drinks", "dinner", "upscale", "unique", "architecture", "romantic", "indoor"],
+      "website": "https://hotelhenry.com/"
+    },
+    {
+      "name": "Shea's Performing Arts Center",
+      "type": "theater",
+      "address": "646 Main St, Buffalo, NY 14202",
+      "price_range": "$$-$$$",
+      "description": "Historic 1926 movie palace turned Broadway touring venue. Stunning ornate interior. World-class musicals, concerts, and performances.",
+      "tags": ["theater", "broadway", "music", "performance", "indoor", "elegant", "special occasion", "cultural"],
+      "website": "https://sheas.org/"
+    },
+    {
+      "name": "Tifft Nature Preserve",
+      "type": "nature/park",
+      "address": "1200 Fuhrmann Blvd, Buffalo, NY 14203",
+      "price_range": "free",
+      "description": "264-acre urban nature preserve with wetlands, hiking trails, birdwatching, and stunning lake views. Peaceful and surprisingly wild for being in the city.",
+      "tags": ["nature", "hiking", "birdwatching", "free", "outdoor", "peaceful", "scenic", "unique"],
+      "website": "https://www.buffaloniagara.org/Tifft"
+    },
+    {
+      "name": "Thin Man Brewery",
+      "type": "brewery/bar",
+      "address": "Multiple locations in Buffalo",
+      "price_range": "$$",
+      "description": "Popular local craft brewery with a welcoming taproom atmosphere. Great beer selection, good food, and lively but not overwhelming vibe.",
+      "tags": ["brewery", "craft beer", "casual", "drinks", "food", "local", "evening"],
+      "website": "https://thinmanbrewery.com/"
+    },
+    {
+      "name": "Anchor Bar",
+      "type": "restaurant/bar",
+      "address": "1047 Main St, Buffalo, NY 14209",
+      "price_range": "$$",
+      "description": "The original birthplace of Buffalo wings. Iconic, touristy but authentic. A must-do for any visitor or fun first date showing off Buffalo's culinary heritage.",
+      "tags": ["iconic", "wings", "casual", "food", "historic", "buffalo-classic", "fun"],
+      "website": "https://www.anchorbar.com/"
+    },
+    {
+      "name": "Flying Bison Brewing Company",
+      "type": "brewery",
+      "address": "840 Seneca St, Buffalo, NY 14210",
+      "price_range": "$$",
+      "description": "Buffalo's oldest craft brewery in a great Larkinville-adjacent taproom. Relaxed atmosphere, local feel, and good food options nearby.",
+      "tags": ["brewery", "craft beer", "casual", "local", "evening", "relaxed"],
+      "website": "https://www.flyingbisonbrewing.com/"
+    }
+  ],
+  "date_categories": {
+    "outdoor_adventure": ["Canalside", "Outer Harbor", "Delaware Park", "Tifft Nature Preserve", "Niagara Falls State Park"],
+    "food_and_drink": ["Anchor Bar", "Thin Man Brewery", "Flying Bison Brewing Company", "The Rooftop at Hotel Henry", "Larkinville / Larkin Square"],
+    "culture_and_arts": ["Albright-Knox Art Gallery (Buffalo AKG Art Museum)", "Shea's Performing Arts Center", "Elmwood Village"],
+    "romantic_and_scenic": ["Niagara Falls State Park", "Outer Harbor", "The Rooftop at Hotel Henry", "Delaware Park", "Canalside"],
+    "free_or_cheap": ["Delaware Park", "Outer Harbor", "Tifft Nature Preserve", "Canalside"],
+    "rainy_day": ["Albright-Knox Art Gallery (Buffalo AKG Art Museum)", "Shea's Performing Arts Center", "The Rooftop at Hotel Henry", "Anchor Bar"],
+    "walkable_neighborhood": ["Elmwood Village", "Larkinville / Larkin Square"]
+  },
+  "seasonal_highlights": {
+    "spring": ["Delaware Park (cherry blossoms)", "Elmwood Village stroll", "Tifft Nature Preserve (migrating birds)"],
+    "summer": ["Canalside concerts", "Outer Harbor", "Larkin Square Food Truck Tuesdays", "Niagara Falls", "Waterfront events"],
+    "fall": ["Delaware Park foliage", "Elmwood Village", "Niagara Falls (less crowded)", "Tifft Nature Preserve"],
+    "winter": ["Canalside ice skating", "Shea's (indoor theater season)", "Albright-Knox", "Hotel Henry (cozy)"]
+  }
+}

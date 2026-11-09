@@ -1,4 +1,4 @@
-# date-planning
+# date-night
 
 A Claude Code skill for planning dates in Buffalo, NY and Western New York. Gets smarter over time — it learns what you and your partner actually enjoy from your reactions and past experiences, so suggestions become more personal with every use.
 
@@ -15,15 +15,15 @@ A Claude Code skill for planning dates in Buffalo, NY and Western New York. Gets
 ### Via skills.sh (recommended)
 
 ```bash
-skills install date-planning
+skills install date-night
 ```
 
 ### Manual
 
-Copy the `date-planning/` folder to your Claude Code skills directory:
+Copy the `date-night/` folder to your Claude Code skills directory:
 
 ```bash
-cp -r date-planning/ ~/.claude/skills/
+cp -r date-night/ ~/.claude/skills/
 ```
 
 ## First run
